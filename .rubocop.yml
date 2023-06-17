@@ -1,0 +1,44 @@
+
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'Gemfile'
+    - 'config/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/**/*'
+    - 'config/routes.rb'
+    - 'test/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  Exclude:
+    - 'app/views/**/*'
+
+Layout/LineLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
