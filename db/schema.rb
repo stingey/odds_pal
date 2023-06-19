@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_214144) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_18_022845) do
   create_table "sports", force: :cascade do |t|
     t.string "key", null: false
     t.string "group", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_214144) do
     t.bigint "popularity_rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_user_favorites_on_sport_id"
+    t.index ["user_id"], name: "index_user_favorites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
