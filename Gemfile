@@ -9,8 +9,7 @@ gem "rails", "~> 7.0.5"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -34,6 +33,7 @@ gem 'httparty', '~> 0.13.7'
 gem 'twilio-ruby', '~> 6.1.0'
 gem 'slim-rails'
 gem 'tailwindcss-rails'
+gem 'sidekiq'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
