@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_06_18_022845) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "sports", force: :cascade do |t|
     t.string "key", null: false
     t.string "group", null: false
@@ -24,8 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_022845) do
   end
 
   create_table "user_favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "sport_id"
+    t.bigint "user_id"
+    t.bigint "sport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sport_id"], name: "index_user_favorites_on_sport_id"
