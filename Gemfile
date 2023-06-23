@@ -35,6 +35,7 @@ gem 'slim-rails'
 gem 'tailwindcss-rails'
 gem 'sidekiq'
 gem "sidekiq-cron"
+gem 'devise'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
