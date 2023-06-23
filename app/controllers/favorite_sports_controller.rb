@@ -3,7 +3,7 @@
 class FavoriteSportsController < ApplicationController
   def create
     sport = Sport.find_by(title: params[:title])
-    UserFavorite.create(user: User.first, sport:)
+    UserFavorite.create(user: current_user, sport:)
     set_sports
 
     respond_to :turbo_stream
@@ -11,7 +11,7 @@ class FavoriteSportsController < ApplicationController
 
   def destroy
     sport = Sport.find(params[:id])
-    user_favorite = UserFavorite.find_by(user: User.first, sport:)
+    user_favorite = UserFavorite.find_by(user: current_user, sport:)
     user_favorite.destroy
     set_sports
 
@@ -21,8 +21,8 @@ class FavoriteSportsController < ApplicationController
   private
 
   def set_sports
-    sports = Sport.all
-    @favorited_sports = Sport.joins(:user_favorites).where(user_favorites: { user_id: User.first.id }).distinct
+    sports = Sport.with_rank
+    @favorited_sports = Sport.joins(:user_favorites).where(user_favorites: { user_id: current_user.id }).distinct
     @sports = sports - @favorited_sports
   end
 end
