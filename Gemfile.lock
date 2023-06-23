@@ -272,6 +272,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  faraday
   importmap-rails
   jbuilder
   pg
