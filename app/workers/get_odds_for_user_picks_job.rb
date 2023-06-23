@@ -4,8 +4,6 @@ class GetOddsForUserPicksJob < ApplicationJob
   queue_as :default
 
   def perform
-    puts "\n\n\n\n\n"
-    puts 'hi'
-    puts "\n\n\n\n\n"
+    Rails.logger.error("\n\n\n\nhello\n\n\n\n")
   end
 end
