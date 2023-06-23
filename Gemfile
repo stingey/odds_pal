@@ -29,7 +29,6 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
-gem 'httparty', '~> 0.13.7'
 gem 'twilio-ruby', '~> 6.1.0'
 gem 'slim-rails'
 gem 'tailwindcss-rails'
