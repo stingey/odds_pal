@@ -8,4 +8,23 @@ class User < ApplicationRecord
 
   has_many :user_favorites, dependent: :destroy
   has_many :sports, through: :user_favorites
+
+  def send_message
+    TwilioApi.new(user: self, message: all_lines_message).send_message
+  end
+
+  def all_lines_message
+    all_line_messages_grouped_by_sport.map do |sport_title, line_message|
+      "#{sport_title}\r\n#{line_message}"
+    end.join("\r\n\r\n")
+  end
+
+  def all_line_messages_grouped_by_sport
+    sports.each_with_object({}) do |sport, hash|
+      message = MessageForSport.new(user: self, sport:).message
+      next if message.blank?
+
+      hash[sport.title] = message
+    end
+  end
 end
