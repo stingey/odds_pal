@@ -1,17 +1,23 @@
 # frozen_string_literal: true
 
-module Odds
-  extend ActiveSupport::Concern
+class MessageForSport
+  def initialize(user:, sport:)
+    @user = user
+    @sport = sport
+  end
 
-  def full_string_of_money_lines_for_sport
+  def message
     next_24_hour_matches.flat_map do |match|
       money_lines = money_lines_for_match(match)
       money_lines_strings_for_match(money_lines)
     end.join("\r\n")
   end
 
+  private
+
   def next_24_hour_matches
-    JSON.parse(OddsApi.new.odds_for_sport(self)).select do |match|
+    response = OddsApi.new.odds_for_sport(@sport)
+    JSON.parse(response.body).select do |match|
       time = Time.zone.parse(match['commence_time'])
       time.future? && time - Time.now.utc < 86_400
     end
@@ -37,8 +43,3 @@ module Odds
     "+#{price}"
   end
 end
-
-
-# sport = Sport.find_by(key: 'baseball_mlb')
-# sport.full_string_of_money_lines_for_sport
-# sport.next_24_hour_matches.map{|hash| "#{hash['home_team']} vs #{hash['away_team']}"}
