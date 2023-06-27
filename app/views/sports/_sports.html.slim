@@ -1,7 +1,7 @@
 = turbo_frame_tag :sports do
   .space-y-3
-    - if User.first.user_favorites.exists?
-      .text-2xl.font-black Favorited sports
+    - if current_user.user_favorites.exists?
+      .text-2xl.font-black Followed sports
       div
         - favorited_sports.each do |sport|
           .inline-block.m-1 = link_to sport.title, favorite_sport_path(sport), class: "bg-sky-500 text-white py-1 px-2 rounded", data: { turbo_method: :delete }

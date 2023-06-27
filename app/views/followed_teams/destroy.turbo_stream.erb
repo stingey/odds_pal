@@ -1,0 +1,3 @@
+<%= turbo_stream.replace :teams do %>
+  <%= render "teams/teams", teams_hash: @teams_hash, followed_teams_hash: @followed_teams_hash %>
+<% end %>
