@@ -2,8 +2,11 @@
 
 class TeamsController < ApplicationController
   def index
-    # sports = Sport.with_rank
-    # @favorited_sports = Sport.joins(:user_favorites).where(user_favorites: { user_id: User.first.id }).distinct
-    # @sports = sports - @favorited_sports
+    sports = current_user.sports
+    teams = sports.flat_map(&:teams)
+    followed_teams = current_user.teams
+    teams -= followed_teams
+    @teams_hash = teams.group_by(&:sport_group)
+    @followed_teams_hash = followed_teams.group_by(&:sport_group)
   end
 end

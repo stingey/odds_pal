@@ -8,9 +8,12 @@ class User < ApplicationRecord
 
   has_many :user_favorites, dependent: :destroy
   has_many :sports, through: :user_favorites
+  has_many :followed_teams, dependent: :destroy
+  has_many :teams, through: :followed_teams
 
   def send_message
-    TwilioApi.new(user: self, message: all_lines_message).send_message
+    # TwilioApi.new(user: self, message: all_lines_message).send_message
+    TwilioApi.new(user: self, message: "tell spenser if you get this").send_message
   end
 
   def all_lines_message

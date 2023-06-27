@@ -1,6 +1,6 @@
 = turbo_frame_tag :sports do
   .space-y-3
-    - if User.first.user_favorites.exists?
+    - if current_user.user_favorites.exists?
       .text-2xl.font-black Followed sports
       div
         - favorited_sports.each do |sport|
