@@ -38,7 +38,7 @@ namespace :sports do
     sports = Sport.where('title LIKE ?', '%WTA%')
     sports.update_all(team_group: 'WTA')
 
-    golf_sports = ['Masters Tournament Winner','PGA Championship Winner','The Open Winner','US Open Winner']
+    golf_sports = ['Masters Tournament Winner', 'PGA Championship Winner', 'The Open Winner', 'US Open Winner']
     golf_sports.each do |sport|
       Sport.find_by(title: sport).update(team_group: 'GOLF')
     end
