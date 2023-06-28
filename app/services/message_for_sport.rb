@@ -7,10 +7,12 @@ class MessageForSport
   end
 
   def message
-    next_24_hour_matches.flat_map do |match|
+    next_24_hour_matches_of_followed_teams.flat_map do |match|
       money_lines = money_lines_for_match(match)
+      next if money_lines.blank?
+
       money_lines_strings_for_match(money_lines)
-    end.join("\r\n")
+    end.compact_blank&.join("\r\n")
   end
 
   private
@@ -20,6 +22,14 @@ class MessageForSport
     JSON.parse(response.body).select do |match|
       time = Time.zone.parse(match['commence_time'])
       time.future? && time - Time.now.utc < 86_400
+    end
+  end
+
+  def next_24_hour_matches_of_followed_teams
+    next_24_hour_matches.select do |match|
+      followed_teams.any? do |team|
+        match['home_team'].include?(team.name) || match['away_team'].include?(team.name)
+      end
     end
   end
 
@@ -41,5 +51,10 @@ class MessageForSport
     return price if price.negative?
 
     "+#{price}"
+  end
+
+  def followed_teams
+    @user.teams.where(sport_group: @sport.team_group).presence ||
+      Team.where(sport_group: @sport.team_group)
   end
 end
