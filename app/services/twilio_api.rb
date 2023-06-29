@@ -12,9 +12,11 @@ class TwilioApi
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     # @client.messages.create(body: "hi tell spenser if you get this", from: 'whatsapp:+14155238886', to: "whatsapp:+12084972476")
-    # @client.messages.create(body: "hi tell spenser if you get this", from: 'whatsapp:+14155238886', to: "whatsapp:+18017030506")
+    # @client.messages.create(body: 'hi tell spenser if you get this', from: '+12087416193', to: '+18017030506')
     # @client.messages.create(body: "hi tell spenser if you get this", from: 'whatsapp:+14155238886', to: "whatsapp:+18012003673")
     # @client.messages.create(body: @message, from: 'whatsapp:+14155238886', to: "whatsapp:+1#{@user.phone_number}")
-    @client.messages.create(body: @message, from: 'whatsapp:+12087416193', to: "whatsapp:+1#{@user.phone_number}")
+    # @client.messages.create(body: @message, from: 'whatsapp:+12087416193', to: "whatsapp:+1#{@user.phone_number}")
+
+    @client.messages.create(body: @message, from: '+12087416193', to: "+1#{@user.phone_number}")
   end
 end
