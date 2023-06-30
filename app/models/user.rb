@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :followed_teams, dependent: :destroy
   has_many :teams, through: :followed_teams
 
+  validates :phone_number, presence: true, numericality: true, length: { is: 10 }
+
   def send_message
     message = all_lines_message
     return if message.blank?
