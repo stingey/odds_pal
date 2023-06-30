@@ -12,8 +12,10 @@ class User < ApplicationRecord
   has_many :teams, through: :followed_teams
 
   def send_message
-    # TwilioApi.new(user: self, message: all_lines_message).send_message
-    TwilioApi.new(user: self, message: "tell spenser if you get this").send_message
+    message = all_lines_message
+    return if message.blank?
+
+    TwilioApi.new(user: self, message:).send_message
   end
 
   def all_lines_message

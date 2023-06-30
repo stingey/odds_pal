@@ -5,7 +5,7 @@ class SendLineTextToAllUsersJob < ApplicationJob
 
   def perform
     User.find_each do |user|
-      SendLineTextToUser.perform_later(user)
+      SendLineTextToUserJob.perform_later(user)
     end
   end
 end

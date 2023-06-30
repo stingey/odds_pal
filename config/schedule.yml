@@ -4,5 +4,5 @@
 #   active_job: true
 get_current_lines_and_send_to_users:
   cron: "* * * * *"
-  class: "GetOddsForUserPicksJob"
+  class: "SendLineTextToAllUsersJob"
   active_job: true
