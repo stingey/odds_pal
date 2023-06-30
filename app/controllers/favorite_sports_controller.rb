@@ -21,7 +21,7 @@ class FavoriteSportsController < ApplicationController
   private
 
   def set_sports
-    sports = Sport.with_rank
+    sports = Sport.all
     @favorited_sports = Sport.joins(:user_favorites).where(user_favorites: { user_id: current_user.id }).distinct
     @sports = sports - @favorited_sports
   end
