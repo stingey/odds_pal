@@ -1,8 +1,8 @@
-# get_current_lines_and_send_to_users:
-#   cron: "0 6 * * *"
-#   class: "GetOddsForUserPicksJob"
-#   active_job: true
 get_current_lines_and_send_to_users:
-  cron: "* * * * *"
+  cron: "0 8 * * *"
   class: "SendLineTextToAllUsersJob"
   active_job: true
+# get_current_lines_and_send_to_users:
+#   cron: "* * * * *"
+#   class: "SendLineTextToAllUsersJob"
+#   active_job: true
