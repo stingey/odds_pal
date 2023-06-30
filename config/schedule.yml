@@ -1,5 +1,5 @@
 get_current_lines_and_send_to_users:
-  cron: "0 8 * * *"
+  cron: "0 10 * * * America/New_York"
   class: "SendLineTextToAllUsersJob"
   active_job: true
 # get_current_lines_and_send_to_users:
