@@ -1,14 +1,14 @@
 = turbo_frame_tag :teams do
   .space-y-3
     - if current_user.followed_teams.exists?
-      .text-2xl.font-black Followed teams
+      .text-2xl.font-semibold.text-neutral-800 Followed teams
       div
         - followed_teams_hash.each do |sport, teams|
           p = sport
           - teams.each do |team|
             .inline-block.m-1 = link_to team.name, followed_team_path(team), class: "bg-amber-500 text-white py-1 px-2 rounded", data: { turbo_method: :delete }
 
-    .text-2xl.font-black All teams
+    .text-2xl.font-semibold.text-neutral-800 All teams
     div
       - teams_hash.each do |sport, teams|
         p = sport

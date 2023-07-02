@@ -13,9 +13,9 @@
   </head>
 
   <body>
+    <%= render 'layouts/navbar' %>
     <main class="container mx-auto mt-28 px-5 flex">
       <div>
-        <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'float-right' %>
         <%= yield %>
       </div>
     </main>
