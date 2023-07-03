@@ -4,9 +4,11 @@
       .text-2xl.font-semibold.text-neutral-800 Followed sports
       div
         - favorited_sports.each do |sport|
-          .inline-block.m-1 = link_to sport.title, favorite_sport_path(sport), class: "bg-sky-500 text-white py-1 px-2 rounded", data: { turbo_method: :delete }
+          .inline-block.m-1 = link_to sport.title, favorite_sport_path(sport), class: "#{button_color(sport.team_group)} text-white py-1 px-2 rounded", data: { turbo_method: :delete }
 
     .text-2xl.font-semibold.text-neutral-800 Available sports
     div
-      - sports.each do |sport|
-        .inline-block.m-1 = link_to sport.title, favorite_sports_path(title: sport.title), class: "bg-sky-500 text-white py-1 px-2 rounded",  data: { turbo_method: :post }
+      - sports_hash.each do |sport_group, sports|
+        p = sport_group
+        - sports.each do |sport|
+          .inline-block.m-1 = link_to sport.title, favorite_sports_path(title: sport.title), class: "#{button_color(sport.team_group)} text-white py-1 px-2 rounded",  data: { turbo_method: :post }

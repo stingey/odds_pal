@@ -10,9 +10,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= favicon_link_tag asset_path('calc2.png') %>
   </head>
 
-  <body>
+  <body class="bg-gray-200">
     <%= render 'layouts/navbar' %>
     <main class="container mx-auto mt-28 px-5 flex">
       <div>
