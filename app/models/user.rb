@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :user_favorites, dependent: :destroy
   has_many :sports, through: :user_favorites
   has_many :followed_teams, dependent: :destroy
-  has_many :teams, through: :followed_teams
+  has_many :teams, -> { distinct }, through: :followed_teams
 
   validates :phone_number, presence: true, numericality: true, length: { is: 10 }
 
