@@ -28,7 +28,7 @@ class MessageForSport
   def next_24_hour_matches_of_followed_teams
     next_24_hour_matches.select do |match|
       followed_teams.any? do |team|
-        match['home_team'].include?(team.name) || match['away_team'].include?(team.name)
+        match['home_team'].downcase.include?(team.name.downcase) || match['away_team'].downcase.include?(team.name.downcase)
       end
     end
   end
