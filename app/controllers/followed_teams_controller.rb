@@ -21,7 +21,7 @@ class FollowedTeamsController < ApplicationController
 
   def set_teams
     sports = current_user.sports
-    teams = sports.flat_map(&:teams)
+    teams = sports.flat_map(&:teams).uniq
     followed_teams = current_user.teams
     teams -= followed_teams
     @teams_hash = teams.group_by(&:sport_group)
