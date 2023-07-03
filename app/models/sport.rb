@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Sport < ApplicationRecord
-  CURRENT_OFFERINGS = %w[MLB ATP NBA].freeze
+  CURRENT_OFFERINGS = %w[MLB ATP NBA WTA].freeze
 
   has_many :user_favorites, dependent: :destroy
   has_many :users, through: :user_favorites

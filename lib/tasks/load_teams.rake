@@ -33,4 +33,14 @@ namespace :teams do # rubocop:disable Metrics/BlockLength
       end
     end
   end
+
+  task load_wta: :environment do
+    players_array = CSV.read('lib/wta_players.csv')
+    players_array.each do |player|
+      team = Team.find_or_create_by(name: player.first, sport_group: 'WTA')
+      Sport.where(team_group: 'WTA').each do |sport|
+        team.team_sports.create(sport:)
+      end
+    end
+  end
 end

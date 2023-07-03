@@ -8,7 +8,7 @@ namespace :sports do
       sport_offering = Sport::CURRENT_OFFERINGS.find { |offered_sport| sport['title'].include?(offered_sport) }
       next if sport_offering.blank?
 
-      Sport.create(sport.merge(team_group: sport_offering))
+      Sport.find_or_create_by(sport.merge(team_group: sport_offering))
     end
     Sport.find_by(title: 'WNBA').destroy
   end
