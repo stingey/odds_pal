@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :teams, only: %i[index]
   resources :favorite_sports, only: %i[create destroy]
   resources :followed_teams, only: %i[create destroy]
+  resources :about, only: :index
   # Defines the root path route ("/")
   root "sports#index"
 end

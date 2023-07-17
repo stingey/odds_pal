@@ -1,8 +1,11 @@
 nav class="sticky top-0 relative flex w-full flex-wrap items-center justify-between py-2 text-neutral-500 shadow-lg focus:text-neutral-700 bg-neutral-100 lg:py-4"
   div class="flex w-full flex-wrap items-center justify-between px-3"
     div class="ml-3"
-      = link_to "OddsPal", root_path, class: "text-2xl font-semibold text-neutral-800"
+      = image_tag('calc2.png', class: 'h-10 my-0 mr-2 inline-block')
+      = link_to "OddsPal", root_path, class: "inline-block align-middle text-2xl font-semibold text-neutral-800"
     div class="mr-3"
-      = link_to "about", '#', class: "mr-4 hover:text-neutral-700"
+      = link_to "about", about_index_path, class: "mr-4 hover:text-neutral-700"
       - if user_signed_in?
         = link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "hover:text-neutral-700"
+      - else
+        = link_to "login", new_user_session_path, class: "hover:text-neutral-700"
